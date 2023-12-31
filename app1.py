@@ -28,25 +28,25 @@ class InventoryResource(Resource):
         # Create a new inventory item
         data = request.get_json()
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO Inventory (name, quantity, price) VALUES (%s, %s, %s)", (data['name'], data['quantity'], data['price']))
+        cur.execute("INSERT INTO Inventory (ProductID, ProductName, QuantityInStock, UnitPrice) VALUES (%s,%s, %s, %s)", (data['ProductID'],data['ProductName'], data['QuantityInStock'], data['UnitPrice']))
         mysql.connection.commit()
         cur.close()
-        return jsonify({'message': 'Item created successfully'}), 201
+        return jsonify({'message': 'Item created successfully'})
 
 class InventoryItemResource(Resource):
     def get(self, item_id):
         # Get a specific inventory item by ID
         cur = mysql.connection.cursor()
-        cur.execute("SELECT * FROM Inventory WHERE id = %s", (item_id,))
+        cur.execute("SELECT * FROM Inventory WHERE ProductID = %s", (item_id,))
         item = cur.fetchone()
         cur.close()
-        return jsonify({'id': item[0], 'name': item[1], 'quantity': item[2], 'price': item[3]})
+        return jsonify({'ProductID': item[0], 'ProductName': item[1], 'QuantityInAtock': item[2], 'UnitPrice': item[3]})
 
     def put(self, item_id):
         # Update a specific inventory item by ID
         data = request.get_json()
         cur = mysql.connection.cursor()
-        cur.execute("UPDATE inventory SET name = %s, quantity = %s, price = %s WHERE id = %s", (data['name'], data['quantity'], data['price'], item_id))
+        cur.execute("UPDATE Inventory SET ProductName = %s, QuantityInStock = %s, UnitPrice = %s WHERE ProductID = %s", (data['ProductName'], data['QuantityInStock'], data['UnitPrice'], item_id))
         mysql.connection.commit()
         cur.close()
         return jsonify({'message': 'Item updated successfully'})
@@ -54,7 +54,7 @@ class InventoryItemResource(Resource):
     def delete(self, item_id):
         # Delete a specific inventory item by ID
         cur = mysql.connection.cursor()
-        cur.execute("DELETE FROM inventory WHERE id = %s", (item_id,))
+        cur.execute("DELETE FROM Inventory WHERE ProductID = %s", (item_id,))
         mysql.connection.commit()
         cur.close()
         return jsonify({'message': 'Item deleted successfully'})
