@@ -28,7 +28,7 @@ class InventoryResource(Resource):
         # Create a new inventory item
         data = request.get_json()
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO Inventory (ProductID, ProductName, QuantityInStock, UnitPrice) VALUES (%s,%s, %s, %s)", (data['ProductID'],data['ProductName'], data['QuantityInStock'], data['UnitPrice']))
+        cur.execute("INSERT INTO Inventory (ProductName, QuantityInStock, UnitPrice) VALUES (%s, %s, %s)", (data['ProductName'], data['QuantityInStock'], data['UnitPrice']))
         mysql.connection.commit()
         cur.close()
         return jsonify({'message': 'Item created successfully'})
