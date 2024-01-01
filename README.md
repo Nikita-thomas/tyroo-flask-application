@@ -30,6 +30,7 @@ from flask_sqlalchemy import SQLAlchemy
 to store and check user information like username, password, account creation dates etc. Used bcrypt for hashing passwords 
 and generating access tokens with the help of flask_jwt_extended 
 
+## User Authentication 
 @jwt_required was used in the CRUD operations to ensure valid tokens for performing any operations.  
 
 ## Inventory Management 
@@ -38,7 +39,7 @@ This was done by creating a MySQL instance for the schema and executing differen
 
 In order to test different API methods and feed JSON responses, POSTMAN was used. 
 
-## Dashbooard 
+## Dashboard 
 
 
 
