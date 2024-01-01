@@ -5,8 +5,8 @@ Building a Flask-based RESTful API for user authentication, inventory management
 ## Table of Contents
 
 - [Installations](#installations)
-- [User Authentication](#userauthentication)
-- [Inventory Management](#inventorymanagement)
+- [User-Authentication](#user-authentication)
+- [Inventory-Management](#inventory-management)
 - [Dashboard](#Dashboard)
 
 ## Installations
@@ -33,7 +33,7 @@ with the following package
 ```bash
 from flask_sqlalchemy import SQLAlchemy
 ```
-## User Authentication 
+## User-Authentication 
 I mainted a User table to store and check user information like username, password, account creation dates etc. Used bcrypt for hashing passwords 
 and generating access tokens with the help of flask_jwt_extended 
 ![image](https://github.com/Nikita-thomas/tyroo-flask-application/assets/97882049/b9aeeac8-5025-4ff0-bac4-90b1cef80563)
@@ -50,7 +50,7 @@ successful login
 
 401 error given for invalid credentials 
 
-## Inventory Management 
+## Inventory-Management 
 creating methods for PUT, GET, POST, DELETE to Update, Read, Create and Delete elemnets in the inventory database respetively. 
 This was done by creating a MySQL instance for the schema and executing different queries and fetching the response. For each method, an appropriate response (such as - "item created successfully") or the appropriate error code was displayed. 
 
