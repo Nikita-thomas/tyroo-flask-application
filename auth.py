@@ -27,6 +27,10 @@ class User(db.Model):
 
     def __repr__(self):
         return f"User('{self.username}')"
+    
+#Creating all columns
+with app.app_context():
+    db.create_all()
 
 from flask import request, jsonify
 from flask_restful import Resource
@@ -35,14 +39,13 @@ from flask_jwt_extended import create_access_token
 class UserRegistrationResource(Resource):
     def post(self):
         data = request.get_json()
-
         hashed_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
         new_user = User(username=data['username'], password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
 
         access_token = create_access_token(identity={'username': data['username']})
-        return jsonify(access_token=access_token), 200
+        return jsonify(access_token=access_token)
     
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
@@ -53,16 +56,23 @@ class UserLoginResource(Resource):
 
         if user and bcrypt.check_password_hash(user.password, data['password']):
             access_token = create_access_token(identity={'username': user.username})
-            return jsonify(access_token=access_token), 200
+            response = jsonify(access_token=access_token)
+            response.status_code = 200
+            return response
         else:
-            return jsonify({'message': 'Invalid credentials'}), 401
+            response = jsonify({'message': 'Invalid credentials'})
+            response.status_code = 401
+            return response
 
 class UserLogoutResource(Resource):
     @jwt_required()
     def post(self):
+        jwt_token = request.get_json()
         # You can add more logic for logging out if necessary
-        return jsonify({'message': 'Successfully logged out'}), 200
-
+        response = jsonify({'message': 'Successfully logged out'})
+        response.status_code = 200
+        return response
+    
 from flask_restful import Api
 
 api = Api(app)
