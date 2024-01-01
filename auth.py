@@ -48,6 +48,7 @@ class UserRegistrationResource(Resource):
         return jsonify(access_token=access_token)
     
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+from flask import url_for
 
 class UserLoginResource(Resource):
     def post(self):
@@ -56,7 +57,7 @@ class UserLoginResource(Resource):
 
         if user and bcrypt.check_password_hash(user.password, data['password']):
             access_token = create_access_token(identity={'username': user.username})
-            response = jsonify(access_token=access_token)
+            response = jsonify(access_token=access_token, redirect= url_for('inventory'))
             response.status_code = 200
             return response
         else:
