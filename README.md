@@ -44,8 +44,10 @@ and generating access tokens with the help of flask_jwt_extended
 *access token generated and returned for successful registeration*
 
 ![image](https://github.com/Nikita-thomas/tyroo-flask-application/assets/97882049/fb712643-f1cc-4369-9e35-e09831d28e93)
+
 *successful login*
 ![image](https://github.com/Nikita-thomas/tyroo-flask-application/assets/97882049/5cf1dc6f-79b8-4c23-b4ec-c05fb6a0218d)
+
 *401 error given for invalid credentials*
 
 ## Inventory-Management 
@@ -54,23 +56,31 @@ This was done by creating a MySQL instance for the schema and executing differen
 
 In order to test different API methods and feed JSON responses, POSTMAN was used. 
 ![image](https://github.com/Nikita-thomas/tyroo-flask-application/assets/97882049/0a1e163f-a869-462d-93cc-a723236589bb)
+
 *GET Method* 
 ![image](https://github.com/Nikita-thomas/tyroo-flask-application/assets/97882049/40300555-93a0-48b7-955e-6235ccb6afcc)
+
 *to get a specific iventory item*
 ![image](https://github.com/Nikita-thomas/tyroo-flask-application/assets/97882049/3011dff7-7ffa-4fc3-9dc0-27593bf74ed4)
+
 *creating a new inventory item*
 ![image](https://github.com/Nikita-thomas/tyroo-flask-application/assets/97882049/8f2fd948-e7d0-49cb-9034-79e49ec16ef2)
+
 *which subsequently gets updated in the SQL schema*
 
 ![image](https://github.com/Nikita-thomas/tyroo-flask-application/assets/97882049/525af292-2434-49a2-a0ce-f68efe761270)
+
 *Updating specific inventory items* 
 ![image](https://github.com/Nikita-thomas/tyroo-flask-application/assets/97882049/ae4564e3-da57-41bf-b70b-d601d0d710a5)
+
 *and Deleting it as well*
 
 ## Dashboard 
 The dashboard features an interactive date picker. It uses the Dash framework and establishes a connection with the 'sales' table of our schema for updated information. 
 ![image](https://github.com/Nikita-thomas/tyroo-flask-application/assets/97882049/7badbeeb-ab38-4fb9-b066-8481ace742ad)
+
 *The bar chart provides an overall sales summary, while the line chart displays sales quantity over time for a selected product.*
 ![image](https://github.com/Nikita-thomas/tyroo-flask-application/assets/97882049/65a2f7c1-619d-41cd-878e-2fd4c29e3ff9)
+
 all plots on the dashboard are interactive
 
