@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 # Configure Flask app
 app.config['SECRET_KEY'] = secrets.token_hex(16)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:sahajmarg@localhost/INVENTORY'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:sahajmarg@localhost/tyroo'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = secrets.token_hex(16)
 
